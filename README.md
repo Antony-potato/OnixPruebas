@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# work kit by HITOBA DESIGN — Next.js Recreation
 
-## Getting Started
+Recreación componente por componente del sitio https://hitoba-office.com/
 
-First, run the development server:
+## Setup
 
+### 1. Crear el proyecto Next.js
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npx create-next-app@latest hitoba-office --typescript --tailwind --app
+cd hitoba-office
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Instalar dependencias
+```bash
+npm install swiper framer-motion lucide-react
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Copiar archivos
+Copia todos los archivos de esta carpeta a tu proyecto, reemplazando los que ya existen.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Correr
+```bash
+npm run dev
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Estructura de componentes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+app/
+  globals.css          ← Fuentes, variables CSS, overrides Swiper
+  layout.tsx           ← Root layout con metadata
+  page.tsx             ← Home page principal
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+components/
+  layout/
+    Navbar.tsx         ← Header fijo con scroll effect + menú mobile
+    Footer.tsx         ← Footer dark con nav, redes, dirección
 
-## Deploy on Vercel
+  sections/
+    HeroSlider.tsx     ← Full-screen fade slider con counter y CTA
+    WorksSection.tsx   ← Slider de obras (Swiper) + lista de proyectos
+    AboutSection.tsx   ← Sección About con imagen y texto
+    JournalSection.tsx ← Grid de artículos del journal
+    ContactSection.tsx ← CTA de contacto con fondo de imágenes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  ui/
+    LoadingScreen.tsx  ← Pantalla de carga animada
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+lib/
+  data.ts              ← Datos de works, journal posts, nav links
+```
+
+## Librerías utilizadas
+
+| Librería | Uso |
+|----------|-----|
+| `swiper` | Sliders del hero y sección Works |
+| `framer-motion` | Animaciones de entrada (fadeUp, slide) y loading screen |
+| `lucide-react` | Íconos de flechas |
+| `next/image` | Optimización de imágenes |
+| `next/link` | Navegación interna |
+
+## Fuentes (Google Fonts)
+- **Cormorant Garamond** — Display / títulos (serif elegante)
+- **DM Sans** — Body / UI text
+- **Noto Sans JP** — Texto japonés
+
+## Notas
+- Las imágenes usan Unsplash como placeholder (reemplazar con las originales)
+- Los datos en `lib/data.ts` se pueden conectar a un CMS o API
+- Los colores están definidos como CSS variables en `globals.css`
